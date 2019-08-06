@@ -1,2 +1,0 @@
--r prod.txt
-pylint>=2.3.1
