@@ -2,13 +2,10 @@
 
 import graphydb
 
-import os
-script_dir = os.path.dirname(__file__)
-file = os.path.join(script_dir, 'model.ttl')
-print(file)
-g = graphydb.GraphyDBRepo(file)
+# import os
+# script_dir = os.path.dirname(__file__)
+# file = os.path.join(script_dir, 'model.ttl')
+# print(file)
 
-
-
-
-g1 = graphydb.GraphyDBRepo(sparql_endpoint='http://localhost:7200/repositories/las_ontology')
+g = graphydb.GraphyDBRepo(sparql_endpoint='http://localhost:7200/repositories/las_ontology')
+g.build_classes()  

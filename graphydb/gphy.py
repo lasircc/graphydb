@@ -3,24 +3,19 @@ The main class representing a GraphDB Repo
 """
 
 import rdflib
-from rdflib.util import guess_format
 
 from .SPARQLHelper import SPARQLHelper
 
 class GraphyDBRepo(object):
 
 
-    def __init__(self, file=None, sparql_endpoint=None):
+    def __init__(self, sparql_endpoint=None):
         
         self.sparql_endpoint = sparql_endpoint
-        if file: # load from file just for debugging
-            self.graph = rdflib.Graph()        
-            self.graph.parse(file, format=guess_format(file))
-        else:
-            self.graph = rdflib.ConjunctiveGraph('SPARQLUpdateStore')
-            self.graph.open(sparql_endpoint)
-        
-        self.SPARQLHelper = SPARQLHelper(self.graph)
+
+        graph = rdflib.ConjunctiveGraph('SPARQLUpdateStore')
+        graph.open(sparql_endpoint)        
+        self.SPARQLHelper = SPARQLHelper(graph)
 
     
 
