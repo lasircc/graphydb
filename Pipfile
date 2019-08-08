@@ -9,7 +9,7 @@ ipython = "*"
 
 [packages]
 SPARQLWrapper = "==1.8.4"
-rdflib = "==4.2.2"
+pandas = "==0.25.0"
 
 [requires]
 python_version = "3.7"

@@ -2,8 +2,6 @@
 The main class representing a GraphDB Repo
 """
 
-import rdflib
-
 from .SPARQLHelper import SPARQLHelper
 
 class GraphyDBRepo(object):
@@ -11,16 +9,13 @@ class GraphyDBRepo(object):
 
     def __init__(self, sparql_endpoint=None):
         
-        self.sparql_endpoint = sparql_endpoint
-
-        graph = rdflib.ConjunctiveGraph('SPARQLUpdateStore')
-        graph.open(sparql_endpoint)        
-        self.SPARQLHelper = SPARQLHelper(graph)
-
+        self.sparql_endpoint = SPARQLHelper(sparql_endpoint)
+        
     
 
     def __repr__(self):
         return f"<Pythonic GraphyDB Reposiotory (SPARQL endpoint = {self.sparql_endpoint})>"
+
 
 
     def build_all(self):
@@ -31,11 +26,12 @@ class GraphyDBRepo(object):
 
     def build_ontologies(self):
 
-        qres = self.SPARQLHelper.get_ontology()
+        qres = self.sparql_endpoint.get_ontology()
         print (qres)
 
 
     def build_classes(self):
 
-        qres = self.SPARQLHelper.get_classes()
+        qres = self.sparql_endpoint.get_classes()
         print (qres)
+        return qres

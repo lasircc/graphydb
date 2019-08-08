@@ -1,20 +1,35 @@
-from rdflib import Graph
+import SPARQLWrapper
+import pandas as pd
+
 
 
 
 class SPARQLHelper(object):
 
 
-    def __init__(self, rdfgraph):  
-        self.rdflib_graph = rdfgraph
+    def __init__(self, sparql_endpoint):  
+        self.sparql = SPARQLWrapper.SPARQLWrapper(sparql_endpoint)
 
 
-    def _run_query(self, query):
+    def _run_query(self, query, method = 'GET'):
         """
         A method to run queries against a SPARQL endpoint
         """
-        qres = self.rdflib_graph.query(query)
-        return list(qres)
+
+        # set HTTP method
+        self.sparql.method = method
+        
+        self.sparql.setQuery(query)
+        self.sparql.setReturnFormat(SPARQLWrapper.JSON)
+
+        # ask for the result
+        result = self.sparql.query().convert()
+
+        if method == 'GET':
+            return pd.io.json.json_normalize(result["results"]["bindings"])
+        else:
+            print ('Query executed\n')
+            return result
 
 
     def get_ontology(self):
