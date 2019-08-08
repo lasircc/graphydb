@@ -7,5 +7,17 @@ class RDF_Entity(object):
     inheritance purposes
     """
 
-    def __init__(self):
+    def __init__(self, uri, isBnode=False):
+        self.uri = uri
+        self.slug = slug
+        self.isBnode = isBnode
+
+
+class GraphDBClass(RDF_Entity):
+    pass
+
+class GraphDBProperty(RDF_Entity):
+    pass
+
+class GraphDBIndividual(RDF_Entity):
         pass

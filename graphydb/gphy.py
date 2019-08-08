@@ -11,6 +11,8 @@ class GraphyDBRepo(object):
         
         self.sparql_endpoint = SPARQLHelper(sparql_endpoint)
         
+        self.all_ontologies = list()
+        self.all_classes = list()
     
 
     def __repr__(self):
