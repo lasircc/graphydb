@@ -1,2 +1,0 @@
-# Mirrors prod
--r _requirements/prod.txt

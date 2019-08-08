@@ -1,3 +1,0 @@
--r prod.txt
-pylint>=2.3.1
-ipython>=7.7.0

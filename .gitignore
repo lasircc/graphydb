@@ -105,7 +105,3 @@ venv.bak/
 
 # vscode
 .vscode/
-
-# temporarily ignore Pipenv files (remove it ASAP)
-Pipfile
-Pipfile.lock 
