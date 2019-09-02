@@ -20,4 +20,4 @@ class GraphDBProperty(RDF_Entity):
     pass
 
 class GraphDBIndividual(RDF_Entity):
-        pass
+    pass
